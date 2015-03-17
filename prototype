@@ -1,0 +1,81 @@
+import java.util.Scanner;
+class Main {
+    private Scanner cli; // user input
+    private int age; // age 
+    private double weight; // weight in kg
+    private double workDayStart; // start of work day in hh,mm format
+    private double workDayEnd; // end of work day in hh,mm format
+    private double dayRange; // number of active hours
+    private double waterToDrink; // average amount of water
+    private double waterToDrinkMin; // minimum amount of water
+    private double waterToDrinkMax; // maximum amount of water
+    private double recommendedWaterDose; // 
+    private double waterAmountPerPeriod; // amount of water per period
+    
+  public static void main(String[] args) {
+      Main waterDrinker = new Main();
+      waterDrinker.welcomeScreen();
+      waterDrinker.gatherData();
+  }
+  
+  public Main(){
+    cli = new Scanner(System.in);
+  }
+  
+  public void welcomeScreen(){
+      System.out.println("");
+      System.out.println("#================================================#");
+      System.out.println("#                                                #");
+      System.out.println("#              Hello, Water Drinker!             #");
+      System.out.println("#                                                #");
+      System.out.println("#================================================#");
+      System.out.println("");
+  }
+  
+  public void gatherData(){
+      System.out.print("> Please enter your age:");
+      age = cli.nextInt();
+      System.out.print("\n> Please enter your weight: ");
+      weight = cli.nextDouble();
+      System.out.print("\n...calculating...");
+      calculateWaterToDrink(age, weight);
+      System.out.print("done.\n\n");
+      recommendationScreen();
+  }
+  
+  public void recommendationScreen(){
+      double literDosage = waterToDrink/1000;
+      System.out.println("#================================================#");
+      System.out.println("\tAccording to the info you provided");
+      System.out.println("\testimated amount of water to consume");
+      System.out.println("\tthroughout the day would be " + waterToDrink + " ml");
+      System.out.println("\tor " + literDosage + " liters.");
+      System.out.println("#================================================#");
+    //   System.out.println("");
+    //   System.out.println("We recommend that you consume " + + " ml ");
+    //   System.out.println("of water every " + + " hours.");
+      
+  }
+  
+  
+  
+  public void calculateWaterToDrink(int age, double weight){
+    //   dayRange = (end - start)/10;
+      
+      if (age >= 16 && age <= 30){
+            recommendedWaterDose = (35 + 40)/2;
+      }
+      waterToDrink = weight * recommendedWaterDose;
+    //   waterAmountPerPeriod = waterToDrink/dayRange;
+  }
+  
+//   public void calculateWaterToDrink(double start, double end, int age, double weight){
+//     //   dayRange = (end - start)/10;
+      
+//       if (age >= 16 && age <= 30){
+//             recommendedWaterDose = (35 + 40)/2;
+//       }
+//       waterToDrink = weight * recommendedWaterDose;
+//     //   waterAmountPerPeriod = waterToDrink/dayRange;
+//   }
+}
